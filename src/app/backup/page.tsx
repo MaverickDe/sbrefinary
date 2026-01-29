@@ -11,7 +11,6 @@ import {
 const translations = {
   ES: {
     nav: ["Infraestructura", "Logística", "Estrategia ESG", "Inversores", "Sostenibilidad", "Seguridad", "I+D+", "Carreras"],
-    heroButtons: ["Directorio de Activos", "Documentos Técnicos"],
     hero: [
       { title: "Independencia Energética", desc: "Optimizando el complejo de Puertollano para liderar el suministro energético de la Península Ibérica. Nuestra infraestructura de vanguardia garantiza un flujo constante de recursos estratégicos, fortaleciendo la soberanía energética regional mediante procesos de refinado de última generación y una red logística sin precedentes en el sur de Europa." },
       { title: "Circularidad Total", desc: "Transformando residuos urbanos y biomasa en combustibles renovables de alta calidad. Este proceso no solo reduce el impacto ambiental, sino que redefine el concepto de materia prima dentro de la industria petroquímica moderna, permitiéndonos cerrar el ciclo de vida de los productos plásticos y avanzar hacia una economía neutra." },
@@ -62,7 +61,6 @@ const translations = {
   },
   EN: {
     nav: ["Infrastructure", "Logistics", "ESG Strategy", "Investors", "Sustainability", "Safety", "R&D", "Careers"],
-    heroButtons: ["Asset Directory", "Technical Papers"],
     hero: [
       { title: "Energy Independence", desc: "Optimizing the Puertollano complex to lead the energy supply of the Iberian Peninsula. Our cutting-edge infrastructure guarantees a constant flow of strategic resources, strengthening regional energy sovereignty through state-of-the-art refining processes and a logistics network unprecedented in Southern Europe." },
       { title: "Total Circularity", desc: "Transforming urban waste and biomass into high-quality renewable fuels. This process not only reduces environmental impact but redefines the concept of raw materials within the modern petrochemical industry, allowing us to close the life cycle of plastic products and move toward a neutral economy." },
@@ -118,7 +116,6 @@ export default function PuertollanoRefinery() {
   const [language, setLanguage] = useState('ES');
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isForbidden, setIsForbidden] = useState(false);
 
   const t = translations[language] || translations['ES'];
 
@@ -128,32 +125,6 @@ export default function PuertollanoRefinery() {
     }, 8000);
     return () => clearInterval(timer);
   }, [t.hero.length]);
-
-  const handleForbiddenClick = (e) => {
-    e.preventDefault();
-    setIsForbidden(true);
-  };
-
-  // Forbidden Screen Component
-  if (isForbidden) {
-    return (
-      <div className="fixed font-serif inset-0 bg-white z-[9999] p-8 flex flex-col items-start justify-start font-mono text-black">
-        <h1 className="text-sm font-bold text-[20px]  mb-2 ">Forbidden</h1>
-        <p className=" mb-4">You do not have access to this resource</p>
-        <hr className="w-full border-black-300" />
-        <p className="text-sm italic">Apache 2.4.64(frebsd) npm-itk/2.7-04 PHP/8.4.10</p>
-        <button 
-          onClick={() => setIsForbidden(false)} 
-          className="mt-12 text-blue-600 underline hover:text-blue-800"
-        >
-          Return to home
-        </button>
-      </div>
-    );
-  }
-
-  // General class for all clickables
-  const clickableClass = "clickable-item cursor-pointer transition-all duration-300 active:scale-95";
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-red-100">
@@ -171,16 +142,14 @@ export default function PuertollanoRefinery() {
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-[1800px] mx-auto px-6 lg:px-10 h-20 lg:h-24 flex items-center justify-between">
           <div className="flex items-center gap-6 lg:gap-16">
-            <div className={`flex items-center gap-2 ${clickableClass}`} onClick={() => window.location.reload()}>
+            <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-red-600 rounded-sm flex items-center justify-center">
                 <Factory size={20} className="text-white" />
               </div>
               <span className="text-xl lg:text-2xl font-black tracking-tighter uppercase">Puerto<span className="text-red-500">llano</span></span>
             </div>
             <div className="hidden xl:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
-              {t.nav.slice(0, 4).map((item, i) => ( 
-                <a key={i} href="#" onClick={handleForbiddenClick} className={clickableClass}>{item}</a> 
-              ))}
+              {t.nav.slice(0, 4).map((item, i) => ( <a key={i} href="#" className="hover:text-red-600 transition">{item}</a> ))}
             </div>
           </div>
           
@@ -197,14 +166,14 @@ export default function PuertollanoRefinery() {
                 </div>
               )}
             </div>
-            <button onClick={() => setIsMenuOpen(true)} className={`p-2 bg-slate-100 text-slate-900 rounded hover:bg-red-600 hover:text-white transition ${clickableClass}`}>
+            <button onClick={() => setIsMenuOpen(true)} className="p-2 bg-slate-100 text-slate-900 rounded hover:bg-red-600 hover:text-white transition">
               <Menu size={24} />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Simplified Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-[100] bg-white animate-in fade-in duration-200">
           <div className="h-full flex flex-col">
@@ -219,19 +188,38 @@ export default function PuertollanoRefinery() {
                 <X size={28} />
               </button>
             </div>
+
             <div className="flex-1 overflow-y-auto">
               <div className="p-6">
                 <nav className="space-y-6 mb-12">
                   {t.nav.map((item, i) => (
-                    <a key={i} href="#" onClick={handleForbiddenClick} className={`block text-lg text-slate-700 hover:text-red-600 transition-colors ${clickableClass}`}>
+                    <a key={i} href="#" className="block text-lg text-slate-700 hover:text-red-600 transition-colors">
                       {item}
                     </a>
                   ))}
                 </nav>
+
                 <div className="space-y-8 pt-8 border-t border-slate-100">
                   <section className="space-y-3">
                     <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Ubicación</p>
                     <p className="text-sm text-slate-600">Puertollano, Ciudad Real, Spain</p>
+                  </section>
+
+                  <section className="space-y-3">
+                    <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Teléfonos</p>
+                    <div className="text-sm text-slate-600 space-y-1">
+                      <p>34 917 538 200</p>
+                      <p>34 917 538 100</p>
+                      <p>34 917 538 000</p>
+                    </div>
+                  </section>
+
+                  <section className="space-y-3">
+                    <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Email</p>
+                    <div className="text-sm space-y-1">
+                      <a href="mailto:Ventas@Puertollanorefinery.com" className="block text-red-600">Ventas@Puertollanorefinery.com</a>
+                      <a href="mailto:mercadeo@Puertollanorefinery.com" className="block text-red-600">mercadeo@Puertollanorefinery.com</a>
+                    </div>
                   </section>
                 </div>
               </div>
@@ -254,12 +242,8 @@ export default function PuertollanoRefinery() {
                   </h1>
                   <p className="text-lg lg:text-xl text-slate-300 max-w-2xl leading-relaxed mb-10 lg:mb-14">{slide.desc}</p>
                   <div className="flex flex-wrap gap-4">
-                    <button onClick={handleForbiddenClick} className={`bg-red-600 hover:bg-red-700 text-white px-8 lg:px-10 py-4 font-bold uppercase tracking-widest text-[10px] transition-all ${clickableClass}`}>
-                      {t.heroButtons[0]}
-                    </button>
-                    <button onClick={handleForbiddenClick} className={`border border-white/30 text-white px-8 lg:px-10 py-4 font-bold uppercase tracking-widest text-[10px] hover:bg-white/10 transition ${clickableClass}`}>
-                      {t.heroButtons[1]}
-                    </button>
+                    <button className="bg-red-600 hover:bg-red-700 text-white px-8 lg:px-10 py-4 font-bold uppercase tracking-widest text-[10px] transition-all">Asset Directory</button>
+                    <button className="border border-white/30 text-white px-8 lg:px-10 py-4 font-bold uppercase tracking-widest text-[10px] hover:bg-white/10 transition">Technical Papers</button>
                   </div>
                 </div>
               </div>
@@ -267,8 +251,8 @@ export default function PuertollanoRefinery() {
           </div>
         ))}
         <div className="absolute bottom-10 right-10 flex gap-4 z-20">
-          <button onClick={() => setCurrentSlide(currentSlide === 0 ? t.hero.length-1 : currentSlide-1)} className={`p-3 border border-white/20 text-white hover:bg-red-600 transition rounded-full ${clickableClass}`}><ChevronLeft size={20}/></button>
-          <button onClick={() => setCurrentSlide(currentSlide === t.hero.length-1 ? 0 : currentSlide+1)} className={`p-3 border border-white/20 text-white hover:bg-red-600 transition rounded-full ${clickableClass}`}><ChevronRight size={20}/></button>
+          <button onClick={() => setCurrentSlide(currentSlide === 0 ? t.hero.length-1 : currentSlide-1)} className="p-3 border border-white/20 text-white hover:bg-red-600 transition rounded-full"><ChevronLeft size={20}/></button>
+          <button onClick={() => setCurrentSlide(currentSlide === t.hero.length-1 ? 0 : currentSlide+1)} className="p-3 border border-white/20 text-white hover:bg-red-600 transition rounded-full"><ChevronRight size={20}/></button>
         </div>
       </section>
 
@@ -282,7 +266,7 @@ export default function PuertollanoRefinery() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 w-full lg:w-2/3">
               {t.tech.units.map((unit, i) => (
-                <div key={i} onClick={handleForbiddenClick} className={`border-l-2 border-red-600 pl-6 py-2 bg-slate-50/50 hover:bg-slate-50 transition p-4 ${clickableClass}`}>
+                <div key={i} className="border-l-2 border-red-600 pl-6 py-2 bg-slate-50/50 hover:bg-slate-50 transition p-4">
                   <div className="text-2xl font-black text-slate-900 mb-1">{unit.value}</div>
                   <div className="text-[10px] font-bold uppercase text-slate-400 mb-3 tracking-widest">{unit.label}</div>
                   <p className="text-xs text-slate-500 leading-relaxed">{unit.desc}</p>
@@ -307,7 +291,7 @@ export default function PuertollanoRefinery() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {t.cards.map((item, i) => (
-                <div key={i} onClick={handleForbiddenClick} className={`bg-white p-8 border border-slate-200 shadow-sm hover:border-red-500 transition group ${clickableClass}`}>
+                <div key={i} className="bg-white p-8 border border-slate-200 shadow-sm hover:border-red-500 transition group">
                   <div className="text-red-500 mb-6 group-hover:scale-110 transition-transform">{i === 0 ? <Settings /> : i === 1 ? <Shield /> : i === 2 ? <Beaker /> : <Award />}</div>
                   <h4 className="font-bold text-sm uppercase tracking-widest mb-4">{item.title}</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">{item.text}</p>
@@ -326,13 +310,13 @@ export default function PuertollanoRefinery() {
               <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">{t.insights.title}</h2>
               <p className="text-slate-400 mt-2 font-medium">{t.insights.subtitle}</p>
             </div>
-            <button onClick={handleForbiddenClick} className={`text-[10px] font-black uppercase border-b-2 border-red-600 pb-2 flex items-center gap-2 hover:text-red-500 hover:border-red-600 transition ${clickableClass}`}>
+            <button className="text-[10px] font-black uppercase border-b-2 border-red-600 pb-2 flex items-center gap-2 hover:text-red-500 hover:border-red-600 transition">
               {t.insights.cta} <ArrowUpRight size={14} />
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {t.insights.blogs.map((blog, i) => (
-              <div key={i} onClick={handleForbiddenClick} className={`group ${clickableClass}`}>
+              <div key={i} className="group cursor-pointer">
                 <div className="aspect-[16/10] overflow-hidden mb-8 border border-slate-100 shadow-lg">
                   <img src={i === 0 ? "https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=800" : i === 1 ? "https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=800" : "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800"} className="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="" />
                 </div>
@@ -352,7 +336,7 @@ export default function PuertollanoRefinery() {
       <section className="bg-slate-950 py-24 text-white">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {["150K", "24/7", "-35%", "12"].map((val, i) => (
-            <div key={i} onClick={handleForbiddenClick} className={clickableClass}>
+            <div key={i}>
               <div className="text-4xl lg:text-5xl font-light mb-2 text-red-500">{val}</div>
               <div className="text-[9px] lg:text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em]">{t.stats[i]}</div>
             </div>
@@ -384,11 +368,7 @@ export default function PuertollanoRefinery() {
               <div key={i}>
                 <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-6 lg:mb-8 text-slate-900 border-b border-red-100 pb-2">{col.title}</h5>
                 <ul className="space-y-3 lg:space-y-4 text-[11px] font-bold uppercase text-slate-500">
-                  {col.links.map(link => ( 
-                    <li key={link}>
-                      <a href="#" onClick={handleForbiddenClick} className={`hover:text-red-600 transition ${clickableClass}`}>{link}</a>
-                    </li> 
-                  ))}
+                  {col.links.map(link => ( <li key={link}><a href="#" className="hover:text-red-600 transition">{link}</a></li> ))}
                 </ul>
               </div>
             ))}
@@ -396,7 +376,7 @@ export default function PuertollanoRefinery() {
           <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6 text-[9px] lg:text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
             <span>{t.footer.copy}</span>
             <div className="flex flex-wrap justify-center gap-6 lg:gap-10">
-              {t.footer.legal.map(link => ( <a key={link} href="#" onClick={handleForbiddenClick} className={`hover:text-slate-900 transition ${clickableClass}`}>{link}</a> ))}
+              {t.footer.legal.map(link => ( <a key={link} href="#" className="hover:text-slate-900 transition">{link}</a> ))}
             </div>
           </div>
         </div>
