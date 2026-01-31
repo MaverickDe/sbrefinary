@@ -8,6 +8,12 @@ import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
 import { Suspense, useEffect } from "react";
 
+// export const metadata = {
+//   icons: {
+//     icon: "/favicon.ico",
+//     apple: "/apple-touch-icon.png",
+//   },
+// };
 
 
 export default function RootLayout({
@@ -20,6 +26,12 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+          <title>Home Page</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  
+
+      </head>
       <body
         // className={geistSans.className}
       >

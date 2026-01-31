@@ -7,6 +7,7 @@ import {
   ArrowUpRight, Menu, MapPin, Activity, 
   Settings, Award, Scale, Beaker, Truck, Container, X, Phone, Mail
 } from 'lucide-react';
+import { Logo1 } from '@/components/ui/logos/logo1';
 
 // let blogimgs = [
 //   "https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=800" , "https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=800" , "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800"
@@ -204,9 +205,11 @@ export default function PuertollanoRefinery() {
         <div className="max-w-[1800px] mx-auto px-6 lg:px-10 h-20 lg:h-24 flex items-center justify-between">
           <div className="flex items-center gap-6 lg:gap-16">
             <div className={`flex items-center gap-2 ${clickableClass}`} onClick={() => window.location.reload()}>
-              <div className="w-8 h-8 bg-red-600 rounded-sm flex items-center justify-center">
+                {/* <img className='w-10' src={"/logo1.png"} /> */}
+                <Logo1/>
+              {/* <div className="w-8 h-8 bg-red-600 rounded-sm flex items-center justify-center">
                 <Factory size={20} className="text-white" />
-              </div>
+              </div> */}
               <span className="text-xl lg:text-2xl font-black tracking-tighter uppercase">Puerto<span className="text-red-500">llano</span></span>
             </div>
             <div className="hidden xl:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500">
@@ -242,9 +245,10 @@ export default function PuertollanoRefinery() {
           <div className="h-full flex flex-col">
             <div className="p-6 border-b border-slate-100 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 bg-red-600 rounded-sm flex items-center justify-center">
+                <Logo1/>
+                {/* <div className="w-7 h-7 bg-red-600 rounded-sm flex items-center justify-center">
                   <Factory size={16} className="text-white" />
-                </div>
+                </div> */}
                 <span className="text-lg font-black tracking-tighter uppercase">Puerto<span className="text-red-500">llano</span></span>
               </div>
               <button onClick={() => setIsMenuOpen(false)} className="p-2 text-slate-400">
@@ -401,9 +405,10 @@ export default function PuertollanoRefinery() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-16 mb-24">
             <div className="sm:col-span-2">
               <div className="flex items-center gap-2 mb-8">
-                <div className="w-10 h-10 bg-red-600 flex items-center justify-center rounded-sm">
+                <Logo1/>
+                {/* <div className="w-10 h-10 bg-red-600 flex items-center justify-center rounded-sm">
                   <Factory size={24} className="text-white" />
-                </div>
+                </div> */}
                 <span className="text-2xl font-black tracking-tighter uppercase">Puerto<span className="text-red-500">llano</span></span>
               </div>
               <p className="text-slate-500 text-sm leading-loose max-w-sm mb-4">{t.footer.desc}</p>
