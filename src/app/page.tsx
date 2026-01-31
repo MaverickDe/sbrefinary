@@ -8,6 +8,20 @@ import {
   Settings, Award, Scale, Beaker, Truck, Container, X, Phone, Mail
 } from 'lucide-react';
 
+// let blogimgs = [
+//   "https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=800" , "https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=800" , "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800"
+// ]
+let blogimgs = [
+  "https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=800",
+  "https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=800",
+
+  "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800", // Oil refinery / industrial safety
+  "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800", // Industrial control room / automation (FIXED)
+   // Industrial automation / energy systems
+  "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800"
+]
+
+
 const translations = {
   ES: {
     nav: ["Infraestructura", "Logística", "Estrategia ESG", "Inversores", "Sostenibilidad", "Seguridad", "I+D+", "Carreras"],
@@ -41,11 +55,20 @@ const translations = {
       title: "Inteligencia Operativa",
       subtitle: "Análisis técnico del hub petroquímico más importante de Castilla-La Mancha.",
       cta: "Ver Todos los Informes",
+      // blogs: [
+      //   { tag: "Informe Técnico", title: "Integración de Hidrógeno Verde en procesos de Hidrotratamiento", date: "25 Ene 2026", desc: "Cómo el electrolizador de 100MW está reduciendo la huella de carbono en la producción de diésel..." },
+      //   { tag: "Sostenibilidad", title: "Reciclaje Químico: Del residuo plástico a la materia prima", date: "12 Ene 2026", desc: "Puertollano inicia pruebas con pirólisis avanzada para cerrar el círculo de los plásticos..." },
+      //   { tag: "Seguridad", title: "Digitalización de la Seguridad en Paradas de Mantenimiento", date: "02 Ene 2026", desc: "Uso de IoT y geolocalización para proteger a los más de 1.000 operarios en paradas críticas..." }
+      // ]
       blogs: [
-        { tag: "Informe Técnico", title: "Integración de Hidrógeno Verde en procesos de Hidrotratamiento", date: "25 Ene 2026", desc: "Cómo el electrolizador de 100MW está reduciendo la huella de carbono en la producción de diésel..." },
-        { tag: "Sostenibilidad", title: "Reciclaje Químico: Del residuo plástico a la materia prima", date: "12 Ene 2026", desc: "Puertollano inicia pruebas con pirólisis avanzada para cerrar el círculo de los plásticos..." },
-        { tag: "Seguridad", title: "Digitalización de la Seguridad en Paradas de Mantenimiento", date: "02 Ene 2026", desc: "Uso de IoT y geolocalización para proteger a los más de 1.000 operarios en paradas críticas..." }
-      ]
+  { tag: "Informe Técnico", title: "Integración de Hidrógeno Verde en procesos de Hidrotratamiento", date: "25 Ene 2026", desc: "Cómo el electrolizador de 100MW está reduciendo la huella de carbono en la producción de diésel..." },
+  { tag: "Sostenibilidad", title: "Reciclaje Químico: Del residuo plástico a la materia prima", date: "12 Ene 2026", desc: "Puertollano inicia pruebas con pirólisis avanzada para cerrar el círculo de los plásticos..." },
+  { tag: "Seguridad", title: "Digitalización de la Seguridad en Paradas de Mantenimiento", date: "02 Ene 2026", desc: "Uso de IoT y geolocalización para proteger a los más de 1.000 operarios en paradas críticas..." },
+
+  { tag: "Innovación", title: "Optimización de Procesos en Refinerías mediante IA", date: "30 Ene 2026", desc: "Cómo los modelos de aprendizaje automático mejoran el rendimiento, la eficiencia energética y la predicción de paradas..." },
+  { tag: "Transición Energética", title: "Captura y Utilización de Carbono en Plantas Industriales", date: "18 Ene 2026", desc: "Análisis de tecnologías de captura de CO₂ que transforman las emisiones en materias primas de valor..." }
+]
+
     },
     stats: ["Barriles/Día Capacidad", "Soporte Técnico 24/7", "Reducción CO2 2030", "Centros Logísticos"],
     footer: {
@@ -92,11 +115,20 @@ const translations = {
       title: "Operational Intelligence",
       subtitle: "Technical analysis of the most important petrochemical hub in central Spain.",
       cta: "View All Reports",
+      // blogs: [
+      //   { tag: "Technical Report", title: "Green Hydrogen Integration in Hydrotreating", date: "25 Jan 2026", desc: "How the 100MW electrolyzer is reducing the carbon footprint of diesel production..." },
+      //   { tag: "Sustainability", title: "Chemical Recycling: From Plastic Waste to Raw Material", date: "12 Jan 2026", desc: "Puertollano begins testing advanced pyrolysis to close the plastics loop..." },
+      //   { tag: "Safety", title: "Safety Digitalization in Maintenance Turnarounds", date: "02 Jan 2026", desc: "Using IoT and geolocation to protect over 1,000 operators during critical stops..." }
+      // ]
       blogs: [
-        { tag: "Technical Report", title: "Green Hydrogen Integration in Hydrotreating", date: "25 Jan 2026", desc: "How the 100MW electrolyzer is reducing the carbon footprint of diesel production..." },
-        { tag: "Sustainability", title: "Chemical Recycling: From Plastic Waste to Raw Material", date: "12 Jan 2026", desc: "Puertollano begins testing advanced pyrolysis to close the plastics loop..." },
-        { tag: "Safety", title: "Safety Digitalization in Maintenance Turnarounds", date: "02 Jan 2026", desc: "Using IoT and geolocation to protect over 1,000 operators during critical stops..." }
-      ]
+  { tag: "Technical Report", title: "Green Hydrogen Integration in Hydrotreating", date: "25 Jan 2026", desc: "How the 100MW electrolyzer is reducing the carbon footprint of diesel production..." },
+  { tag: "Sustainability", title: "Chemical Recycling: From Plastic Waste to Raw Material", date: "12 Jan 2026", desc: "Puertollano begins testing advanced pyrolysis to close the plastics loop..." },
+  { tag: "Safety", title: "Safety Digitalization in Maintenance Turnarounds", date: "02 Jan 2026", desc: "Using IoT and geolocation to protect over 1,000 operators during critical stops..." },
+
+  { tag: "Innovation", title: "AI-Driven Process Optimization in Refineries", date: "30 Jan 2026", desc: "How machine learning models are improving yield, energy efficiency, and downtime prediction..." },
+  { tag: "Energy Transition", title: "Carbon Capture and Utilization in Industrial Plants", date: "18 Jan 2026", desc: "Exploring how CO₂ capture technologies are turning emissions into valuable feedstock..." }
+]
+
     },
     stats: ["Barrels/Day Capacity", "24/7 Tech Support", "CO2 Reduction 2030", "Logistics Hubs"],
     footer: {
@@ -334,7 +366,10 @@ export default function PuertollanoRefinery() {
             {t.insights.blogs.map((blog, i) => (
               <div key={i} onClick={handleForbiddenClick} className={`group ${clickableClass}`}>
                 <div className="aspect-[16/10] overflow-hidden mb-8 border border-slate-100 shadow-lg">
-                  <img src={i === 0 ? "https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=800" : i === 1 ? "https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=800" : "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800"} className="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="" />
+                  <img src={
+                    // i === 0 ? "https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=800" : i === 1 ? "https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=800" : "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800"
+                    blogimgs[i]
+                    } className="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="" />
                 </div>
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-[10px] font-black uppercase text-red-600 tracking-widest">{blog.tag}</span>
