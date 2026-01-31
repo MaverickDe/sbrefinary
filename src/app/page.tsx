@@ -417,7 +417,7 @@ export default function PuertollanoRefinery() {
                 <div className="flex flex-col gap-1">
                   <p className="flex items-center gap-2"><Phone size={12} className="text-red-600"/> 34 917 538 200 / 100 / 000</p>
                 </div>
-                <p className="flex items-center gap-2"><Mail size={12} className="text-red-600"/> Ventas@Puertollanorefinery.com</p>
+                <p className="flex items-center gap-2 lowercase"><Mail size={12} className="text-red-600"/> ventas@puertollanorefinery.com</p>
               </div>
             </div>
             {t.footer.cols.map((col, i) => (
